@@ -1,54 +1,51 @@
 //
-//  ViewController.swift
+//  SavedViewController.swift
 //  SocialNetwork
 //
-//  Created by Viktor Pechersky on 02.11.2018.
+//  Created by Viktor Pechersky on 09.11.2018.
 //  Copyright © 2018 Viktor Pecherskyi. All rights reserved.
 //
 
 import UIKit
 
-class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-    @IBOutlet weak var table: UITableView!
+class FavoriteViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+       
+    @IBOutlet weak var tableView: UITableView!
     
-    fileprivate var users: [JSONUser] = [] {
+    fileprivate let coreDataManager = CoreDataManager.sharedInstance
+    
+    var users = [User]() {
         didSet {
-            print("NAME: ", users)
-            table.reloadData()
+            tableView.reloadData()
         }
     }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        updateData()
+
         initTableView()
-        //shouldPerformSegueWithIdentifier(identifier: "showDetail", sender: sender)
-        
+        getUsersFromLocalStorage()
+    }
+    
+    private func getUsersFromLocalStorage() {
+        coreDataManager.getUser(completion: { [weak self] users in
+            DispatchQueue.main.async(execute: {
+                self?.users = users
+            })
+        })
     }
     
     private func initTableView() {
         let cellNib = UINib(nibName: "UserCell", bundle: nil)
-        table?.register(cellNib, forCellReuseIdentifier: "userCellID")
-        table?.backgroundView = UIView(frame: .zero)
-        table?.tableFooterView = UIView(frame: .zero)
-        table?.separatorStyle = .singleLine
-        table?.estimatedRowHeight = 75.0
+        tableView?.register(cellNib, forCellReuseIdentifier: "userCellID")
+        tableView?.backgroundView = UIView(frame: .zero)
+        tableView?.tableFooterView = UIView(frame: .zero)
+        tableView?.separatorStyle = .singleLine
+        tableView?.estimatedRowHeight = 75.0
     }
-    
-    private func updateData() {
-        APIService.sharedInstance.getAPI(completion: { [weak self] response in
-            
-            if let _response = response as? JSONResponse {
-                print("RES: ", response)
-                self?.users = _response.results
-            } else {
-                self?.users = []
-            }
-        })
-    }
-    
+ 
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+    return 1
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -64,7 +61,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             as? UserCell else {
                 return UITableViewCell()
         }
-        cell.item = users[indexPath.item]
+        cell.configureCell(user: users[indexPath.row])
+
         return cell
     }
     
@@ -77,13 +75,10 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         if segue.identifier == "userDetail" {
             
             if let vc = segue.destination as? DetailViewController {
-                let user = sender as? JSONUser
-                vc.jsonUser = user
+                let user = sender as? User
+                vc.localUser = user
             }
         }
     }
 }
-
-
-
 
