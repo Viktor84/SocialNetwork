@@ -62,7 +62,6 @@ class FavoriteViewController: UIViewController, UITableViewDelegate, UITableView
                 return UITableViewCell()
         }
         cell.configureCell(user: users[indexPath.row])
-
         return cell
     }
     

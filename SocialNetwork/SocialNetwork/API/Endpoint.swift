@@ -10,7 +10,7 @@ import Foundation
 import Alamofire
 
 enum Endpoint {
-    case getAPI
+    case getAPI(page: Int, size: Int)
     
     var method: HTTPMethod {
         switch self {
@@ -22,10 +22,8 @@ enum Endpoint {
     var url: String {
         let baseURL = "https://randomuser.me/api/"
         switch self {
-        case .getAPI:
-            return baseURL + "?results=15" // 1 ver
-            //return baseURL + "?results=25&inc=gender,name,email,phone,picture" // 1.1 ver
-            //return baseURL + " ?results=5&nat=gb,us,es&format=json" // 2 ver
+        case .getAPI(let page, let size):
+            return baseURL + "?page=\(page.toString())&results=\(size.toString())&seed=abc"
         }
     }
 }

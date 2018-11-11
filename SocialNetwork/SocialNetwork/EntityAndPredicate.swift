@@ -20,4 +20,3 @@ extension EntityAndPredicate {
         return request
     }
 }
-

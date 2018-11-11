@@ -8,6 +8,7 @@ target 'SocialNetwork' do
   # Pods for SocialNetwork
   pod 'Alamofire', '~> 4.7'
   pod 'SDWebImage'
+  pod 'TPKeyboardAvoiding', '~> 1.2.11'
 
   
 end

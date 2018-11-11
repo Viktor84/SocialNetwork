@@ -23,8 +23,8 @@ class APIService {
         manager = SessionManager(configuration: configuration)
     }
     
-    func getAPI( completion: @escaping (_ result: JSONResponse?) -> Void) {
-        let endpoint = Endpoint.getAPI
+    func getAPI(page: Int, size: Int, completion: @escaping (_ result: JSONResponse?) -> Void) {
+        let endpoint = Endpoint.getAPI(page: page, size: size)
         
         Alamofire.request(endpoint.url, method: endpoint.method, parameters: nil, encoding: JSONEncoding.default)
             .responseData { response in

@@ -12,10 +12,11 @@ import CoreData
 final class User: NSManagedObject {
 
     @NSManaged private(set) var firstName: String?
-    //@NSManaged private(set) var lastName: String
-    //@NSManaged private(set) var email: String
+    @NSManaged private(set) var lastName: String?
+    @NSManaged private(set) var email: String
     @NSManaged private(set) var uuid: String
-    //@NSManaged private(set) var phone: String
+    @NSManaged private(set) var phone: String
+    @NSManaged private(set) var picture: String
     
     @discardableResult
     static func insert(into context: NSManagedObjectContext, item: [String: Any]?) -> User? {
@@ -38,6 +39,10 @@ final class User: NSManagedObject {
         }
 
         networkUsers?.firstName = item["firstName"] as? String ?? ""
+        networkUsers?.lastName = item["lastName"] as? String ?? ""
+        networkUsers?.email = item["email"] as? String ?? ""
+        networkUsers?.phone = item["phone"] as? String ?? ""
+        networkUsers?.picture = item["picture"] as? String ?? ""
  
         return networkUsers
     }

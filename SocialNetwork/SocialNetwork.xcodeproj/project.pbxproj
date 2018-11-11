@@ -13,6 +13,9 @@
 		DD2C9B4121909FFB003A01F0 /* UserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD2C9B3F21909FFB003A01F0 /* UserCell.swift */; };
 		DD2C9B4221909FFB003A01F0 /* UserCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD2C9B4021909FFB003A01F0 /* UserCell.xib */; };
 		DD59FB182192204E003D1740 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD59FB172192204E003D1740 /* DetailViewController.swift */; };
+		DD692CFD21979C680058E5CA /* Int + SocialNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD692CFC21979C680058E5CA /* Int + SocialNetwork.swift */; };
+		DD692CFF2197C0300058E5CA /* LoadingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD692CFE2197C02F0058E5CA /* LoadingCell.swift */; };
+		DD692D012197C0380058E5CA /* LoadingCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD692D002197C0380058E5CA /* LoadingCell.xib */; };
 		DD899F95219439F70056744B /* SocialNetwork.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = DD899F93219439F70056744B /* SocialNetwork.xcdatamodeld */; };
 		DD899F9D219442670056744B /* NSManagedObjectContext+Observers.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD899F97219442660056744B /* NSManagedObjectContext+Observers.swift */; };
 		DD899F9E219442670056744B /* EntityAndPredicate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD899F98219442660056744B /* EntityAndPredicate.swift */; };
@@ -24,7 +27,7 @@
 		DDC05910218CE33F00A634E4 /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDC0590F218CE33F00A634E4 /* APIService.swift */; };
 		DDC05912218CE66200A634E4 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDC05911218CE66200A634E4 /* Endpoint.swift */; };
 		DDF02B88218BB95A0006B03A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDF02B87218BB95A0006B03A /* AppDelegate.swift */; };
-		DDF02B8A218BB95A0006B03A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDF02B89218BB95A0006B03A /* ViewController.swift */; };
+		DDF02B8A218BB95A0006B03A /* UserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDF02B89218BB95A0006B03A /* UserViewController.swift */; };
 		DDF02B8D218BB95A0006B03A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DDF02B8B218BB95A0006B03A /* Main.storyboard */; };
 		DDF02B8F218BB95C0006B03A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DDF02B8E218BB95C0006B03A /* Assets.xcassets */; };
 		DDF02B92218BB95C0006B03A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DDF02B90218BB95C0006B03A /* LaunchScreen.storyboard */; };
@@ -39,6 +42,9 @@
 		DD2C9B3F21909FFB003A01F0 /* UserCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCell.swift; sourceTree = "<group>"; };
 		DD2C9B4021909FFB003A01F0 /* UserCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserCell.xib; sourceTree = "<group>"; };
 		DD59FB172192204E003D1740 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		DD692CFC21979C680058E5CA /* Int + SocialNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int + SocialNetwork.swift"; sourceTree = "<group>"; };
+		DD692CFE2197C02F0058E5CA /* LoadingCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingCell.swift; sourceTree = "<group>"; };
+		DD692D002197C0380058E5CA /* LoadingCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoadingCell.xib; sourceTree = "<group>"; };
 		DD899F94219439F70056744B /* SocialNetwork.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SocialNetwork.xcdatamodel; sourceTree = "<group>"; };
 		DD899F97219442660056744B /* NSManagedObjectContext+Observers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSManagedObjectContext+Observers.swift"; sourceTree = "<group>"; };
 		DD899F98219442660056744B /* EntityAndPredicate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EntityAndPredicate.swift; sourceTree = "<group>"; };
@@ -51,7 +57,7 @@
 		DDC05911218CE66200A634E4 /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
 		DDF02B84218BB95A0006B03A /* SocialNetwork.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SocialNetwork.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DDF02B87218BB95A0006B03A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		DDF02B89218BB95A0006B03A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		DDF02B89218BB95A0006B03A /* UserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewController.swift; sourceTree = "<group>"; };
 		DDF02B8C218BB95A0006B03A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		DDF02B8E218BB95C0006B03A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DDF02B91218BB95C0006B03A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -84,6 +90,14 @@
 				DD0A1E9B21944C5B00C65488 /* User.swift */,
 			);
 			name = Model;
+			sourceTree = "<group>";
+		};
+		DD692CFB21979C280058E5CA /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				DD692CFC21979C680058E5CA /* Int + SocialNetwork.swift */,
+			);
+			path = Extension;
 			sourceTree = "<group>";
 		};
 		DD899F9621943A2A0056744B /* CoreData */ = {
@@ -121,8 +135,10 @@
 		DDC0590B218CD0BD00A634E4 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				DD692CFE2197C02F0058E5CA /* LoadingCell.swift */,
+				DD692D002197C0380058E5CA /* LoadingCell.xib */,
 				DDF02B87218BB95A0006B03A /* AppDelegate.swift */,
-				DDF02B89218BB95A0006B03A /* ViewController.swift */,
+				DDF02B89218BB95A0006B03A /* UserViewController.swift */,
 				DD59FB172192204E003D1740 /* DetailViewController.swift */,
 				DD179B8F21950A1700C0A05C /* FavoriteViewController.swift */,
 				DD2C9B3F21909FFB003A01F0 /* UserCell.swift */,
@@ -160,6 +176,7 @@
 		DDF02B86218BB95A0006B03A /* SocialNetwork */ = {
 			isa = PBXGroup;
 			children = (
+				DD692CFB21979C280058E5CA /* Extension */,
 				DDC0590C218CD38D00A634E4 /* JSON Model */,
 				DDC05909218CD01100A634E4 /* API */,
 				DDC0590B218CD0BD00A634E4 /* Controllers */,
@@ -244,6 +261,7 @@
 				DD2C9B4221909FFB003A01F0 /* UserCell.xib in Resources */,
 				DDF02B92218BB95C0006B03A /* LaunchScreen.storyboard in Resources */,
 				DDF02B8F218BB95C0006B03A /* Assets.xcassets in Resources */,
+				DD692D012197C0380058E5CA /* LoadingCell.xib in Resources */,
 				DDF02B8D218BB95A0006B03A /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -278,11 +296,13 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-SocialNetwork/Pods-SocialNetwork-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
+				"${BUILT_PRODUCTS_DIR}/TPKeyboardAvoiding/TPKeyboardAvoiding.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TPKeyboardAvoiding.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -298,10 +318,11 @@
 			files = (
 				DD899F9E219442670056744B /* EntityAndPredicate.swift in Sources */,
 				DDC0590E218CD3B700A634E4 /* JSONRespone.swift in Sources */,
-				DDF02B8A218BB95A0006B03A /* ViewController.swift in Sources */,
+				DDF02B8A218BB95A0006B03A /* UserViewController.swift in Sources */,
 				DD2C9B4121909FFB003A01F0 /* UserCell.swift in Sources */,
 				DDC05910218CE33F00A634E4 /* APIService.swift in Sources */,
 				DD899F9D219442670056744B /* NSManagedObjectContext+Observers.swift in Sources */,
+				DD692CFF2197C0300058E5CA /* LoadingCell.swift in Sources */,
 				DDF02B88218BB95A0006B03A /* AppDelegate.swift in Sources */,
 				DD0A1E9C21944C5B00C65488 /* User.swift in Sources */,
 				DD899FA1219442670056744B /* CoreDataManager.swift in Sources */,
@@ -311,6 +332,7 @@
 				DD59FB182192204E003D1740 /* DetailViewController.swift in Sources */,
 				DD899FA2219442670056744B /* Managed.swift in Sources */,
 				DD899F95219439F70056744B /* SocialNetwork.xcdatamodeld in Sources */,
+				DD692CFD21979C680058E5CA /* Int + SocialNetwork.swift in Sources */,
 				DD899FA0219442670056744B /* NSManagedObjectContext+Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

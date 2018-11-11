@@ -31,8 +31,6 @@ class CoreDataManager {
         return persistentContainer.newBackgroundContext()
     }
     
-    
-    
     func saveUser(data: [String: Any]?, completion: @escaping ()->()) {
         guard let item = data else {
             completion()
