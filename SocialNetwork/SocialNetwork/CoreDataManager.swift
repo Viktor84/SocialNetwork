@@ -1,3 +1,10 @@
+//
+//  CoreDataManager.swift
+//  SocialNetwork
+//
+//  Created by Viktor Pechersky on 11.11.2018.
+//  Copyright © 2018 Viktor Pecherskyi. All rights reserved.
+//
 
 import Foundation
 import CoreData
@@ -54,4 +61,24 @@ class CoreDataManager {
             completion(users)
         }
     }
-}
+    
+    func deleteUser(user: User, completion: @escaping ()->()) {
+     
+        privateContext.perform {
+            let request = NSFetchRequest<NSFetchRequestResult>()
+            request.entity = NSEntityDescription.entity(forEntityName: "User", in: self.privateContext)
+            request.predicate = NSPredicate(format: "uuid == %@", user.uuid)
+            
+            if let resultFetchRequest = try? self.privateContext.fetch(request), !resultFetchRequest.isEmpty {
+                if let object = resultFetchRequest[0] as? NSManagedObject {
+                    self.privateContext.delete(object)
+                }
+            }
+            
+            self.privateContext.performChanges(block: {
+                print("delete successfully")
+                completion()
+            })
+        }
+    }}
+

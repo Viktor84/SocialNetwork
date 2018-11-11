@@ -23,7 +23,7 @@ enum Endpoint {
         let baseURL = "https://randomuser.me/api/"
         switch self {
         case .getAPI(let page, let size):
-            return baseURL + "?page=\(page.toString())&results=\(size.toString())&seed=abc"
+            return baseURL + "?page=\(page.toString())&results=\(size.toString())&seed=abc&nat=us,dk,fr,gb,ca,de"
         }
     }
 }

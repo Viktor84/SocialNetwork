@@ -52,4 +52,11 @@ class UserCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
 
     }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        
+        imageUser.sd_cancelCurrentAnimationImagesLoad()
+        imageUser.image = nil
+    }
 }

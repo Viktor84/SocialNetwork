@@ -42,7 +42,10 @@ final class User: NSManagedObject {
         networkUsers?.lastName = item["lastName"] as? String ?? ""
         networkUsers?.email = item["email"] as? String ?? ""
         networkUsers?.phone = item["phone"] as? String ?? ""
-        networkUsers?.picture = item["picture"] as? String ?? ""
+        if let picture = item["picture"] as? String {
+            networkUsers?.picture = picture
+        }
+   
  
         return networkUsers
     }

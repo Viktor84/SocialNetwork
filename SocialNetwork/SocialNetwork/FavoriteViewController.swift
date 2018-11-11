@@ -16,7 +16,9 @@ class FavoriteViewController: UIViewController, UITableViewDelegate, UITableView
     
     var users = [User]() {
         didSet {
-            tableView.reloadData()
+            DispatchQueue.main.async(execute: { [weak self] in
+                self?.tableView.reloadData()
+            })
         }
     }
 
@@ -24,14 +26,19 @@ class FavoriteViewController: UIViewController, UITableViewDelegate, UITableView
         super.viewDidLoad()
 
         initTableView()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
         getUsersFromLocalStorage()
     }
     
     private func getUsersFromLocalStorage() {
         coreDataManager.getUser(completion: { [weak self] users in
-            DispatchQueue.main.async(execute: {
+            //DispatchQueue.main.async(execute: {
                 self?.users = users
-            })
+            //})
         })
     }
     
@@ -64,6 +71,22 @@ class FavoriteViewController: UIViewController, UITableViewDelegate, UITableView
         cell.configureCell(user: users[indexPath.row])
         return cell
     }
+    
+    
+    
+     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        let delete = UITableViewRowAction(style: .default, title: "Delete") { (action, indexPath) in
+            self.coreDataManager.deleteUser(user: self.users[indexPath.row], completion: { [weak self] in
+                self?.users.remove(at: indexPath.row)
+            })
+            
+        }
+        return [delete]
+    }
+
+    
+    
+    
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let user = users[indexPath.row]

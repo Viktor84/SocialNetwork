@@ -24,9 +24,18 @@ class UserViewController: UIViewController, UITableViewDelegate, UITableViewData
     var currentPage = 1
     var isLoadingMore = false
     
+    private func initializeNotifications() {
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(moveToFavotrites),
+            name: NSNotification.Name(rawValue: "MoveToFavotritesNotifications"),
+            object: nil)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        initializeNotifications()
         //updateData(page: currentPage, size: 2)
         updateData()
         initTableView()
@@ -39,8 +48,12 @@ class UserViewController: UIViewController, UITableViewDelegate, UITableViewData
         return refreshControl
     }()
     
+    @objc func moveToFavotrites() {
+        tabBarController?.selectedIndex = 1
+    }
+    
     @objc func refreshData() {
-        currentPage = 0
+        currentPage = 1
         updateData()
     }
     
@@ -51,8 +64,7 @@ class UserViewController: UIViewController, UITableViewDelegate, UITableViewData
     fileprivate func loadMorePages() {
         currentPage += 1
         getListFromServer(page: currentPage)
-        
-        }
+    }
     
     private func initTableView() {
         let cellNib = UINib(nibName: "UserCell", bundle: nil)

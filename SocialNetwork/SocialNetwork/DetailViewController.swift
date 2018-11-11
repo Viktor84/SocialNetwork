@@ -23,7 +23,7 @@ class DetailViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
-    
+    @IBOutlet weak var validationMessage: UILabel!
     @IBOutlet weak var firstNameTextField: UITextField!
     @IBOutlet weak var lastNameTextField: UITextField!
     @IBOutlet weak var emailTextField: UITextField!
@@ -55,14 +55,82 @@ class DetailViewController: UIViewController, UITextFieldDelegate {
         self.title = "Edit user profile"
         let saveButton = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(tapButton))
         self.navigationItem.rightBarButtonItem = saveButton
+        validationMessage.isHidden = true
     }
+    
+    private func isValidationEmail(email value: String) -> Bool {
+        let emailRegEx = "^[a-zA-Z0-9\\+\\.\\_\\%\\-\\+]{1,256}\\@[a-zA-Z0-9][a-zA-Z0-9\\-]{0,64}(\\.[a-zA-Z0-9][a-zA-Z0-9\\-]{0,25})+$"
+        let emailTest = NSPredicate(format: "SELF MATCHES %@", emailRegEx)
+        return emailTest.evaluate(with: value)
+    }
+    
+    private func isValidationPhone(value: String) -> Bool {
+        let phoneRegEx = "^[0-9]{6-14}$" //"^((\\+)|(00))[0-9]{6,14}|[0-9]{6,14}$"//"^\\d{3}-\\d{3}-\\d{4}$"
+        let phoneTest = NSPredicate(format: "SELF MATCHES %@", phoneRegEx)
+        let result = phoneTest.evaluate(with: value)
+        return result
+    }
+    
+//     regexUsername = try? NSRegularExpression(pattern: "^[\\w]+$", options: NSRegularExpression.Options.caseInsensitive)
+//    
+//    func isValidUsername(_ str: String?) -> Bool {
+//                if let username = str {
+//                    let matches = regexUsername?.matches(in: username, options: NSRegularExpression.MatchingOptions(rawValue: 0), range: NSMakeRange(0, username.count))
+//        
+//                    if let count = matches?.count {
+//                        return count > 0
+//                    } else {
+//                        return false
+//                    }
+//                } else {
+//                    return false
+//                }
+//            }
     
     @objc func tapButton() {
         
-        //TODO: validation
+        //MARK: validation //
+        
         var firstName = firstNameTextField.text
         var lastName = lastNameTextField.text
-        var email = emailTextField.text
+        
+        guard let email = emailTextField.text else {
+            return
+        }
+        
+        if email.isEmpty {
+            validationMessage.isHidden = false
+             validationMessage.text = "Please enter email"
+            return
+        }
+        
+        guard isValidationEmail(email: email) else {
+            validationMessage.isHidden = false
+            validationMessage.text = "Please enter valid email address"
+            return
+        }
+        
+//        guard let phone = phoneTextField.text else {
+//            return
+//        }
+//        
+//        if phone.count >= 8 {
+//            validationMessage.isHidden = false
+//            validationMessage.text = "Please enter phone n"
+//            return
+//        }
+        
+//        if phone.isEmpty {
+//            validationMessage.isHidden = false
+//            validationMessage.text = "Please enter phone"
+//            return
+//        }
+//
+//        guard isValidationPhone(value: phone) else {
+//            validationMessage.isHidden = false
+//            validationMessage.text = "Please enter valid phone"
+//            return
+//        }
         var phone = phoneTextField.text
         var uuid = ""
         if let _jsonUser = jsonUser as? JSONUser {
@@ -85,7 +153,8 @@ class DetailViewController: UIViewController, UITextFieldDelegate {
         coreDataManager.saveUser(data: data, completion: { [weak self] in
             print("saved")
             DispatchQueue.main.async(execute: {
-                self?.tabBarController?.selectedIndex = 1
+                self?.navigationController?.popViewController(animated: false)
+                NotificationCenter.default.post(Notification(name: NSNotification.Name(rawValue: "MoveToFavotritesNotifications")))
             })
         })
     }

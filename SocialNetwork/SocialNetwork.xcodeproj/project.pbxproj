@@ -17,12 +17,13 @@
 		DD692CFF2197C0300058E5CA /* LoadingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD692CFE2197C02F0058E5CA /* LoadingCell.swift */; };
 		DD692D012197C0380058E5CA /* LoadingCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD692D002197C0380058E5CA /* LoadingCell.xib */; };
 		DD899F95219439F70056744B /* SocialNetwork.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = DD899F93219439F70056744B /* SocialNetwork.xcdatamodeld */; };
-		DD899F9D219442670056744B /* NSManagedObjectContext+Observers.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD899F97219442660056744B /* NSManagedObjectContext+Observers.swift */; };
-		DD899F9E219442670056744B /* EntityAndPredicate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD899F98219442660056744B /* EntityAndPredicate.swift */; };
-		DD899F9F219442670056744B /* TrakkersStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD899F99219442660056744B /* TrakkersStack.swift */; };
-		DD899FA0219442670056744B /* NSManagedObjectContext+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD899F9A219442660056744B /* NSManagedObjectContext+Extensions.swift */; };
-		DD899FA1219442670056744B /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD899F9B219442660056744B /* CoreDataManager.swift */; };
-		DD899FA2219442670056744B /* Managed.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD899F9C219442660056744B /* Managed.swift */; };
+		DD8B692821987D6800FD66D9 /* ValidationUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD8B692721987D6800FD66D9 /* ValidationUtils.swift */; };
+		DD8B692A2198B2AD00FD66D9 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD8B69292198B2AD00FD66D9 /* CoreDataManager.swift */; };
+		DD8B692C2198B37E00FD66D9 /* EntityAndPredicate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD8B692B2198B37E00FD66D9 /* EntityAndPredicate.swift */; };
+		DD8B692E2198B41E00FD66D9 /* Managed.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD8B692D2198B41E00FD66D9 /* Managed.swift */; };
+		DD8B69302198B4B400FD66D9 /* NSManagedObjectContext+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD8B692F2198B4B400FD66D9 /* NSManagedObjectContext+Extensions.swift */; };
+		DD8B69322198B59E00FD66D9 /* NSManagedObjectContext+Observers.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD8B69312198B59E00FD66D9 /* NSManagedObjectContext+Observers.swift */; };
+		DD8B69342198B63C00FD66D9 /* TrakkersStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD8B69332198B63C00FD66D9 /* TrakkersStack.swift */; };
 		DDC0590E218CD3B700A634E4 /* JSONRespone.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDC0590D218CD3B700A634E4 /* JSONRespone.swift */; };
 		DDC05910218CE33F00A634E4 /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDC0590F218CE33F00A634E4 /* APIService.swift */; };
 		DDC05912218CE66200A634E4 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDC05911218CE66200A634E4 /* Endpoint.swift */; };
@@ -46,12 +47,13 @@
 		DD692CFE2197C02F0058E5CA /* LoadingCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingCell.swift; sourceTree = "<group>"; };
 		DD692D002197C0380058E5CA /* LoadingCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoadingCell.xib; sourceTree = "<group>"; };
 		DD899F94219439F70056744B /* SocialNetwork.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SocialNetwork.xcdatamodel; sourceTree = "<group>"; };
-		DD899F97219442660056744B /* NSManagedObjectContext+Observers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSManagedObjectContext+Observers.swift"; sourceTree = "<group>"; };
-		DD899F98219442660056744B /* EntityAndPredicate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EntityAndPredicate.swift; sourceTree = "<group>"; };
-		DD899F99219442660056744B /* TrakkersStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrakkersStack.swift; sourceTree = "<group>"; };
-		DD899F9A219442660056744B /* NSManagedObjectContext+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSManagedObjectContext+Extensions.swift"; sourceTree = "<group>"; };
-		DD899F9B219442660056744B /* CoreDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
-		DD899F9C219442660056744B /* Managed.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Managed.swift; sourceTree = "<group>"; };
+		DD8B692721987D6800FD66D9 /* ValidationUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidationUtils.swift; sourceTree = "<group>"; };
+		DD8B69292198B2AD00FD66D9 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
+		DD8B692B2198B37E00FD66D9 /* EntityAndPredicate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntityAndPredicate.swift; sourceTree = "<group>"; };
+		DD8B692D2198B41E00FD66D9 /* Managed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Managed.swift; sourceTree = "<group>"; };
+		DD8B692F2198B4B400FD66D9 /* NSManagedObjectContext+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSManagedObjectContext+Extensions.swift"; sourceTree = "<group>"; };
+		DD8B69312198B59E00FD66D9 /* NSManagedObjectContext+Observers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSManagedObjectContext+Observers.swift"; sourceTree = "<group>"; };
+		DD8B69332198B63C00FD66D9 /* TrakkersStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrakkersStack.swift; sourceTree = "<group>"; };
 		DDC0590D218CD3B700A634E4 /* JSONRespone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONRespone.swift; sourceTree = "<group>"; };
 		DDC0590F218CE33F00A634E4 /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
 		DDC05911218CE66200A634E4 /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
@@ -103,12 +105,12 @@
 		DD899F9621943A2A0056744B /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
-				DD899F9B219442660056744B /* CoreDataManager.swift */,
-				DD899F98219442660056744B /* EntityAndPredicate.swift */,
-				DD899F9C219442660056744B /* Managed.swift */,
-				DD899F9A219442660056744B /* NSManagedObjectContext+Extensions.swift */,
-				DD899F97219442660056744B /* NSManagedObjectContext+Observers.swift */,
-				DD899F99219442660056744B /* TrakkersStack.swift */,
+				DD8B69292198B2AD00FD66D9 /* CoreDataManager.swift */,
+				DD8B692B2198B37E00FD66D9 /* EntityAndPredicate.swift */,
+				DD8B692D2198B41E00FD66D9 /* Managed.swift */,
+				DD8B692F2198B4B400FD66D9 /* NSManagedObjectContext+Extensions.swift */,
+				DD8B69312198B59E00FD66D9 /* NSManagedObjectContext+Observers.swift */,
+				DD8B69332198B63C00FD66D9 /* TrakkersStack.swift */,
 				DD899F93219439F70056744B /* SocialNetwork.xcdatamodeld */,
 			);
 			name = CoreData;
@@ -135,13 +137,14 @@
 		DDC0590B218CD0BD00A634E4 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				DD8B692721987D6800FD66D9 /* ValidationUtils.swift */,
 				DD692CFE2197C02F0058E5CA /* LoadingCell.swift */,
-				DD692D002197C0380058E5CA /* LoadingCell.xib */,
 				DDF02B87218BB95A0006B03A /* AppDelegate.swift */,
 				DDF02B89218BB95A0006B03A /* UserViewController.swift */,
 				DD59FB172192204E003D1740 /* DetailViewController.swift */,
 				DD179B8F21950A1700C0A05C /* FavoriteViewController.swift */,
 				DD2C9B3F21909FFB003A01F0 /* UserCell.swift */,
+				DD692D002197C0380058E5CA /* LoadingCell.xib */,
 				DD2C9B4021909FFB003A01F0 /* UserCell.xib */,
 			);
 			name = Controllers;
@@ -316,24 +319,25 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DD899F9E219442670056744B /* EntityAndPredicate.swift in Sources */,
+				DD8B692C2198B37E00FD66D9 /* EntityAndPredicate.swift in Sources */,
+				DD8B69322198B59E00FD66D9 /* NSManagedObjectContext+Observers.swift in Sources */,
 				DDC0590E218CD3B700A634E4 /* JSONRespone.swift in Sources */,
 				DDF02B8A218BB95A0006B03A /* UserViewController.swift in Sources */,
+				DD8B692821987D6800FD66D9 /* ValidationUtils.swift in Sources */,
 				DD2C9B4121909FFB003A01F0 /* UserCell.swift in Sources */,
 				DDC05910218CE33F00A634E4 /* APIService.swift in Sources */,
-				DD899F9D219442670056744B /* NSManagedObjectContext+Observers.swift in Sources */,
 				DD692CFF2197C0300058E5CA /* LoadingCell.swift in Sources */,
 				DDF02B88218BB95A0006B03A /* AppDelegate.swift in Sources */,
+				DD8B692E2198B41E00FD66D9 /* Managed.swift in Sources */,
 				DD0A1E9C21944C5B00C65488 /* User.swift in Sources */,
-				DD899FA1219442670056744B /* CoreDataManager.swift in Sources */,
-				DD899F9F219442670056744B /* TrakkersStack.swift in Sources */,
 				DD179B9021950A1700C0A05C /* FavoriteViewController.swift in Sources */,
 				DDC05912218CE66200A634E4 /* Endpoint.swift in Sources */,
 				DD59FB182192204E003D1740 /* DetailViewController.swift in Sources */,
-				DD899FA2219442670056744B /* Managed.swift in Sources */,
 				DD899F95219439F70056744B /* SocialNetwork.xcdatamodeld in Sources */,
 				DD692CFD21979C680058E5CA /* Int + SocialNetwork.swift in Sources */,
-				DD899FA0219442670056744B /* NSManagedObjectContext+Extensions.swift in Sources */,
+				DD8B692A2198B2AD00FD66D9 /* CoreDataManager.swift in Sources */,
+				DD8B69302198B4B400FD66D9 /* NSManagedObjectContext+Extensions.swift in Sources */,
+				DD8B69342198B63C00FD66D9 /* TrakkersStack.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
