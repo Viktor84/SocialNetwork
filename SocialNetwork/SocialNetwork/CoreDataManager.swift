@@ -63,7 +63,6 @@ class CoreDataManager {
     }
     
     func deleteUser(user: User, completion: @escaping ()->()) {
-     
         privateContext.perform {
             let request = NSFetchRequest<NSFetchRequestResult>()
             request.entity = NSEntityDescription.entity(forEntityName: "User", in: self.privateContext)
@@ -80,5 +79,7 @@ class CoreDataManager {
                 completion()
             })
         }
-    }}
+    }
+    
+}
 

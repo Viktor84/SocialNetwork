@@ -8,13 +8,12 @@
 
 import UIKit
 
-class UserViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-    @IBOutlet weak var table: UITableView!
-   
+class UserViewController: UIViewController {
     
+    @IBOutlet weak var table: UITableView!
+
     fileprivate var users: [JSONUser] = [] {
         didSet {
-            print("NAME: ", users)
             isLoadingMore = false
             table.reloadData()
             refreshControl.endRefreshing()
@@ -78,7 +77,7 @@ class UserViewController: UIViewController, UITableViewDelegate, UITableViewData
          table.addSubview(refreshControl)
     }
     
-    private func updateData(page: Int = 1, size: Int = 3) {
+    private func updateData(page: Int = 1, size: Int = 7) {
         APIService.sharedInstance.getAPI(page: page, size: size, completion: { [weak self] response in
             guard let _response = response as? JSONResponse,
                 let _users = _response.results as? [JSONUser] else{
@@ -92,6 +91,18 @@ class UserViewController: UIViewController, UITableViewDelegate, UITableViewData
             }
         })
     }
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "userDetail" {
+            if let vc = segue.destination as? DetailViewController {
+                let user = sender as? JSONUser
+                vc.jsonUser = user
+            }
+        }
+    }
+}
+
+extension UserViewController: UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 2
@@ -104,15 +115,15 @@ class UserViewController: UIViewController, UITableViewDelegate, UITableViewData
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: "userCellID")as! UserCell
-        
+            
             cell.item = users[indexPath.item]
             return cell
         } else {
             let  cell = tableView.dequeueReusableCell(withIdentifier: "LoadingCellID", for: indexPath) as! LoadingCell
-          
+            
             cell.selectionStyle = UITableViewCell.SelectionStyle.none
             cell.spinner.startAnimating()
-          return cell
+            return cell
         }
     }
     
@@ -127,20 +138,16 @@ class UserViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
     }
     
+
+}
+
+extension UserViewController: UITableViewDelegate {
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let user = users[indexPath.row]
         performSegue(withIdentifier: "userDetail", sender: user)
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "userDetail" {
-            
-            if let vc = segue.destination as? DetailViewController {
-                let user = sender as? JSONUser
-                vc.jsonUser = user
-            }
-        }
-    }
 
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         let actualPosition = scrollView.panGestureRecognizer.translation(in: scrollView.superview)

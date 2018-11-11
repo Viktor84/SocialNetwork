@@ -37,7 +37,9 @@ class DetailViewController: UIViewController, UITextFieldDelegate {
             lastNameTextField.text = jsonUser.name.last
             emailTextField.text = jsonUser.email
             phoneTextField.text = jsonUser.phone
-            imageCurentUser.sd_setImage(with: URL(string: jsonUser.picture.thumbnail ?? "tab_users"), placeholderImage: UIImage(named: "placeholder"))
+            if let picture = jsonUser.picture.medium as? String {
+                imageCurentUser.sd_setImage(with: URL(string: picture), placeholderImage: UIImage(named: "placeholder"))
+            }
         }
         
         if let localUser = localUser as? User {
@@ -45,7 +47,9 @@ class DetailViewController: UIViewController, UITextFieldDelegate {
             lastNameTextField.text = localUser.lastName
             emailTextField.text = localUser.email
             phoneTextField.text = localUser.phone
-            imageCurentUser.sd_setImage(with: URL(string: localUser.picture ?? "tab_users"), placeholderImage: UIImage(named: "placeholder"))
+            if let picture = localUser.picture as? String {
+                imageCurentUser.sd_setImage(with: URL(string: localUser.picture ?? "tab_users"), placeholderImage: UIImage(named: "placeholder"))
+            }
         }
     }
     
@@ -54,40 +58,11 @@ class DetailViewController: UIViewController, UITextFieldDelegate {
         
         configureProfile()
         self.title = "Edit user profile"
+        
         let saveButton = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(tapButton))
         self.navigationItem.rightBarButtonItem = saveButton
         validationMessage.isHidden = true
     }
-    
-//    private func isValidationEmail(email value: String) -> Bool {
-//        let emailRegEx = "^[a-zA-Z0-9\\+\\.\\_\\%\\-\\+]{1,256}\\@[a-zA-Z0-9][a-zA-Z0-9\\-]{0,64}(\\.[a-zA-Z0-9][a-zA-Z0-9\\-]{0,25})+$"
-//        let emailTest = NSPredicate(format: "SELF MATCHES %@", emailRegEx)
-//        return emailTest.evaluate(with: value)
-//    }
-//
-//    private func isValidationPhone(value: String) -> Bool {
-//        let phoneRegEx = "^[0-9]{6-14}$" //"^((\\+)|(00))[0-9]{6,14}|[0-9]{6,14}$"//"^\\d{3}-\\d{3}-\\d{4}$"
-//        let phoneTest = NSPredicate(format: "SELF MATCHES %@", phoneRegEx)
-//        let result = phoneTest.evaluate(with: value)
-//        return result
-//    }
-    
-//     regexUsername = try? NSRegularExpression(pattern: "^[\\w]+$", options: NSRegularExpression.Options.caseInsensitive)
-//    
-//    func isValidUsername(_ str: String?) -> Bool {
-//                if let username = str {
-//                    let matches = regexUsername?.matches(in: username, options: NSRegularExpression.MatchingOptions(rawValue: 0), range: NSMakeRange(0, username.count))
-//        
-//                    if let count = matches?.count {
-//                        return count > 0
-//                    } else {
-//                        return false
-//                    }
-//                } else {
-//                    return false
-//                }
-//            }
-    
     
     private func isValid(firstName: String, lastName: String, email: String) -> Bool {
         var firstName = firstNameTextField.text ?? ""
@@ -127,7 +102,7 @@ class DetailViewController: UIViewController, UITextFieldDelegate {
             return
         }
        
-        var phone = phoneTextField.text
+        let phone = phoneTextField.text
         var uuid = ""
         if let _jsonUser = jsonUser as? JSONUser {
             uuid = _jsonUser.login.uuid
@@ -142,12 +117,11 @@ class DetailViewController: UIViewController, UITextFieldDelegate {
         data["uuid"] = uuid
         data["email"] = email
         data["phone"] = phone
-        if let _picture = jsonUser?.picture.thumbnail as? String {
+        if let _picture = jsonUser?.picture.medium as? String {
             data["picture"] = _picture
         }
  
         coreDataManager.saveUser(data: data, completion: { [weak self] in
-            print("saved")
             DispatchQueue.main.async(execute: {
                 self?.navigationController?.popViewController(animated: false)
                 NotificationCenter.default.post(Notification(name: NSNotification.Name(rawValue: "MoveToFavotritesNotifications")))

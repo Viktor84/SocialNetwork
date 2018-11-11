@@ -30,6 +30,6 @@ struct JSONLogin: Codable {
 }
 
 struct JSONPicture: Codable {
-    let thumbnail: String?
+    let medium: String?
 }
 

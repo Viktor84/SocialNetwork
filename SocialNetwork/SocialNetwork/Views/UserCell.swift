@@ -10,6 +10,7 @@ import UIKit
 import SDWebImage
 
 class UserCell: UITableViewCell {
+    
     @IBOutlet weak var firsNameLabel: UILabel!
     @IBOutlet weak var lastNameLabel: UILabel!
     @IBOutlet weak var phoneLabel: UILabel!
@@ -29,10 +30,12 @@ class UserCell: UITableViewCell {
     
     private func configureCell() {
         guard let item = item else { return }
-        firsNameLabel.text = item.name.first
-        lastNameLabel.text = item.name.last
+        firsNameLabel.text = item.name.first.capitalized
+        lastNameLabel.text = item.name.last.capitalized
         phoneLabel.text = item.phone
-        imageUser.sd_setImage(with: URL(string: item.picture.thumbnail ?? "tab_users"), placeholderImage: UIImage(named: "placeholder"))
+        if let picture = item.picture.medium as? String {
+            imageUser.sd_setImage(with: URL(string: picture), placeholderImage: UIImage(named: "placeholder"))
+        }
     }
     
     func configureCell(user: User?) {
@@ -40,17 +43,14 @@ class UserCell: UITableViewCell {
         firsNameLabel.text = item.firstName
         lastNameLabel.text = item.lastName
         phoneLabel.text = item.phone
-        imageUser.sd_setImage(with: URL(string: item.picture ?? "tab_users"), placeholderImage: UIImage(named: "placeholder"))
+        
+        if let picture = item.picture as? String {
+           imageUser.sd_setImage(with: URL(string: picture), placeholderImage: UIImage(named: "placeholder"))
+        }
     }
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
     }
     
     override func prepareForReuse() {

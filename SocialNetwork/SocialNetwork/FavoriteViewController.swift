@@ -8,7 +8,7 @@
 
 import UIKit
 
-class FavoriteViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class FavoriteViewController: UIViewController {
        
     @IBOutlet weak var tableView: UITableView!
     
@@ -36,9 +36,7 @@ class FavoriteViewController: UIViewController, UITableViewDelegate, UITableView
     
     private func getUsersFromLocalStorage() {
         coreDataManager.getUser(completion: { [weak self] users in
-            //DispatchQueue.main.async(execute: {
-                self?.users = users
-            //})
+            self?.users = users
         })
     }
     
@@ -50,9 +48,22 @@ class FavoriteViewController: UIViewController, UITableViewDelegate, UITableView
         tableView?.separatorStyle = .singleLine
         tableView?.estimatedRowHeight = 75.0
     }
- 
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "userDetail" {
+            
+            if let vc = segue.destination as? DetailViewController {
+                let user = sender as? User
+                vc.localUser = user
+            }
+        }
+    }
+}
+
+extension FavoriteViewController: UITableViewDataSource {
+    
     func numberOfSections(in tableView: UITableView) -> Int {
-    return 1
+        return 1
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -71,10 +82,12 @@ class FavoriteViewController: UIViewController, UITableViewDelegate, UITableView
         cell.configureCell(user: users[indexPath.row])
         return cell
     }
+}
+
+
+extension FavoriteViewController: UITableViewDelegate {
     
-    
-    
-     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         let delete = UITableViewRowAction(style: .default, title: "Delete") { (action, indexPath) in
             self.coreDataManager.deleteUser(user: self.users[indexPath.row], completion: { [weak self] in
                 self?.users.remove(at: indexPath.row)
@@ -84,23 +97,8 @@ class FavoriteViewController: UIViewController, UITableViewDelegate, UITableView
         return [delete]
     }
 
-    
-    
-    
-    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let user = users[indexPath.row]
         performSegue(withIdentifier: "userDetail", sender: user)
     }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "userDetail" {
-            
-            if let vc = segue.destination as? DetailViewController {
-                let user = sender as? User
-                vc.localUser = user
-            }
-        }
-    }
 }
-

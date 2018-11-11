@@ -94,6 +94,25 @@
 			name = Model;
 			sourceTree = "<group>";
 		};
+		DD3684C62198EFF600F53E34 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				DD2C9B3F21909FFB003A01F0 /* UserCell.swift */,
+				DD692CFE2197C02F0058E5CA /* LoadingCell.swift */,
+				DD692D002197C0380058E5CA /* LoadingCell.xib */,
+				DD2C9B4021909FFB003A01F0 /* UserCell.xib */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		DD3684C72198F02A00F53E34 /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				DD8B692721987D6800FD66D9 /* ValidationUtils.swift */,
+			);
+			path = Util;
+			sourceTree = "<group>";
+		};
 		DD692CFB21979C280058E5CA /* Extension */ = {
 			isa = PBXGroup;
 			children = (
@@ -137,15 +156,9 @@
 		DDC0590B218CD0BD00A634E4 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				DD8B692721987D6800FD66D9 /* ValidationUtils.swift */,
-				DD692CFE2197C02F0058E5CA /* LoadingCell.swift */,
-				DDF02B87218BB95A0006B03A /* AppDelegate.swift */,
 				DDF02B89218BB95A0006B03A /* UserViewController.swift */,
 				DD59FB172192204E003D1740 /* DetailViewController.swift */,
 				DD179B8F21950A1700C0A05C /* FavoriteViewController.swift */,
-				DD2C9B3F21909FFB003A01F0 /* UserCell.swift */,
-				DD692D002197C0380058E5CA /* LoadingCell.xib */,
-				DD2C9B4021909FFB003A01F0 /* UserCell.xib */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -179,6 +192,9 @@
 		DDF02B86218BB95A0006B03A /* SocialNetwork */ = {
 			isa = PBXGroup;
 			children = (
+				DDF02B87218BB95A0006B03A /* AppDelegate.swift */,
+				DD3684C72198F02A00F53E34 /* Util */,
+				DD3684C62198EFF600F53E34 /* Views */,
 				DD692CFB21979C280058E5CA /* Extension */,
 				DDC0590C218CD38D00A634E4 /* JSON Model */,
 				DDC05909218CD01100A634E4 /* API */,
