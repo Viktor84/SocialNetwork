@@ -15,6 +15,7 @@ class DetailViewController: UIViewController, UITextFieldDelegate {
     var localUser: User?
     
     fileprivate let coreDataManager = CoreDataManager.sharedInstance
+    fileprivate let validationUtils = ValidationUtils.sharedInstance
     
     @IBOutlet weak var imageCurentUser: UIImageView! {
         didSet {
@@ -28,7 +29,7 @@ class DetailViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var lastNameTextField: UITextField!
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var phoneTextField: UITextField!
-     @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var scrollView: UIScrollView!
     
     private func configureProfile() {
         if let jsonUser = jsonUser as? JSONUser {
@@ -58,18 +59,18 @@ class DetailViewController: UIViewController, UITextFieldDelegate {
         validationMessage.isHidden = true
     }
     
-    private func isValidationEmail(email value: String) -> Bool {
-        let emailRegEx = "^[a-zA-Z0-9\\+\\.\\_\\%\\-\\+]{1,256}\\@[a-zA-Z0-9][a-zA-Z0-9\\-]{0,64}(\\.[a-zA-Z0-9][a-zA-Z0-9\\-]{0,25})+$"
-        let emailTest = NSPredicate(format: "SELF MATCHES %@", emailRegEx)
-        return emailTest.evaluate(with: value)
-    }
-    
-    private func isValidationPhone(value: String) -> Bool {
-        let phoneRegEx = "^[0-9]{6-14}$" //"^((\\+)|(00))[0-9]{6,14}|[0-9]{6,14}$"//"^\\d{3}-\\d{3}-\\d{4}$"
-        let phoneTest = NSPredicate(format: "SELF MATCHES %@", phoneRegEx)
-        let result = phoneTest.evaluate(with: value)
-        return result
-    }
+//    private func isValidationEmail(email value: String) -> Bool {
+//        let emailRegEx = "^[a-zA-Z0-9\\+\\.\\_\\%\\-\\+]{1,256}\\@[a-zA-Z0-9][a-zA-Z0-9\\-]{0,64}(\\.[a-zA-Z0-9][a-zA-Z0-9\\-]{0,25})+$"
+//        let emailTest = NSPredicate(format: "SELF MATCHES %@", emailRegEx)
+//        return emailTest.evaluate(with: value)
+//    }
+//
+//    private func isValidationPhone(value: String) -> Bool {
+//        let phoneRegEx = "^[0-9]{6-14}$" //"^((\\+)|(00))[0-9]{6,14}|[0-9]{6,14}$"//"^\\d{3}-\\d{3}-\\d{4}$"
+//        let phoneTest = NSPredicate(format: "SELF MATCHES %@", phoneRegEx)
+//        let result = phoneTest.evaluate(with: value)
+//        return result
+//    }
     
 //     regexUsername = try? NSRegularExpression(pattern: "^[\\w]+$", options: NSRegularExpression.Options.caseInsensitive)
 //    
@@ -87,50 +88,45 @@ class DetailViewController: UIViewController, UITextFieldDelegate {
 //                }
 //            }
     
+    
+    private func isValid(firstName: String, lastName: String, email: String) -> Bool {
+        var firstName = firstNameTextField.text ?? ""
+        
+        let validFirstName = validationUtils.isValidFirstNameSuccess(firstName)
+        if !validFirstName.success {
+            validationMessage.isHidden = false
+            validationMessage.text = validFirstName.error
+            return false
+        }
+        
+        let validLastName = validationUtils.isValidLastNameSuccess(lastName)
+        if !validLastName.success {
+            validationMessage.isHidden = false
+            validationMessage.text = validLastName.error
+            return false
+        }
+        
+        let validEmailName = validationUtils.isValidEmailSuccess(email)
+        if !validEmailName.success {
+            validationMessage.isHidden = false
+            validationMessage.text = validEmailName.error
+            return false
+        }
+        
+        validationMessage.isHidden = true
+        return true
+    }
+    
     @objc func tapButton() {
         
-        //MARK: validation //
+        let firstName = (firstNameTextField.text ?? "").trimmingCharacters(in: .whitespacesAndNewlines)
+        let lastName = (lastNameTextField.text ?? "").trimmingCharacters(in: .whitespacesAndNewlines)
+        let email = (emailTextField.text ?? "").trimmingCharacters(in: .whitespacesAndNewlines)
         
-        var firstName = firstNameTextField.text
-        var lastName = lastNameTextField.text
-        
-        guard let email = emailTextField.text else {
+        guard isValid(firstName: firstName, lastName: lastName, email: email) else {
             return
         }
-        
-        if email.isEmpty {
-            validationMessage.isHidden = false
-             validationMessage.text = "Please enter email"
-            return
-        }
-        
-        guard isValidationEmail(email: email) else {
-            validationMessage.isHidden = false
-            validationMessage.text = "Please enter valid email address"
-            return
-        }
-        
-//        guard let phone = phoneTextField.text else {
-//            return
-//        }
-//        
-//        if phone.count >= 8 {
-//            validationMessage.isHidden = false
-//            validationMessage.text = "Please enter phone n"
-//            return
-//        }
-        
-//        if phone.isEmpty {
-//            validationMessage.isHidden = false
-//            validationMessage.text = "Please enter phone"
-//            return
-//        }
-//
-//        guard isValidationPhone(value: phone) else {
-//            validationMessage.isHidden = false
-//            validationMessage.text = "Please enter valid phone"
-//            return
-//        }
+       
         var phone = phoneTextField.text
         var uuid = ""
         if let _jsonUser = jsonUser as? JSONUser {

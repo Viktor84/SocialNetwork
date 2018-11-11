@@ -36,7 +36,6 @@ class UserViewController: UIViewController, UITableViewDelegate, UITableViewData
         super.viewDidLoad()
         
         initializeNotifications()
-        //updateData(page: currentPage, size: 2)
         updateData()
         initTableView()
     }
