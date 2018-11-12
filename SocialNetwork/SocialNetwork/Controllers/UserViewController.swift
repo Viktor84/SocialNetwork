@@ -137,8 +137,6 @@ extension UserViewController: UITableViewDataSource {
             return 0
         }
     }
-    
-
 }
 
 extension UserViewController: UITableViewDelegate {

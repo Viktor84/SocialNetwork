@@ -70,4 +70,3 @@ extension Managed where Self: NSManagedObject {
         return self.findOrFetch(in: context, matching: NSPredicate(format: "uuid == %@", uuid))
     }
 }
-
