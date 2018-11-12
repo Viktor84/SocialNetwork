@@ -40,8 +40,8 @@ class UserCell: UITableViewCell {
     
     func configureCell(user: User?) {
         guard let item = user else { return }
-        firsNameLabel.text = item.firstName
-        lastNameLabel.text = item.lastName
+        firsNameLabel.text = item.firstName?.capitalized
+        lastNameLabel.text = item.lastName?.capitalized
         phoneLabel.text = item.phone
         
         if let picture = item.picture as? String {
